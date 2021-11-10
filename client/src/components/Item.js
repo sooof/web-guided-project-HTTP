@@ -33,7 +33,9 @@ function Item(props) {
   //2. Send our axios call to delete current item (id)
   //3. Redirect user to item list page.
   //4. Update local state
+  const handleDelete = () => {
 
+  }
 
   return (
     <div className="item-wrapper">
@@ -64,7 +66,7 @@ function Item(props) {
       <button onClick={handleEdit} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick={handleDelete} className="md-button">
         Delete
       </button>
     </div>
