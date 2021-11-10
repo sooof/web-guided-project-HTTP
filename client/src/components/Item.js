@@ -34,7 +34,13 @@ function Item(props) {
   //3. Redirect user to item list page.
   //4. Update local state
   const handleDelete = () => {
-
+    axios.delete(`http://localhost:3333/items/${id}`)
+      .then(resp=>{
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   return (
