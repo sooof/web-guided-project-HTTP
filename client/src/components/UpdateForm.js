@@ -15,6 +15,7 @@ const UpdateForm = props => {
 
   // const { id } = props.match.params;//useParams();
   const { id } = useParams();
+  const { push } = useHistory();
 
   //3. Get the data for the item we are editing.
   useEffect(()=> {
@@ -41,16 +42,16 @@ const UpdateForm = props => {
   };
 
   
-    //4. User changes the data.
-    //5. Clicking the update button.
-    //6. Put request to update the data.
-    //7. Redirect the user to the item page.
 
   const handleSubmit = e => {
+    //4. User changes the data.
+    //5. Clicking the update button.
     e.preventDefault();
+    //6. Put request to update the data.
     axios.put(`http://localhost:3333/items/${id}`, item)
       .then(resp=> {
-        console.log(resp);
+        //7. Redirect the user to the item page.
+        push(`/item-list/${id}`);
       })
       .catch(err=> {
         console.log(err);
