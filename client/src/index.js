@@ -22,10 +22,6 @@ const App = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const deleteItem = (id) => {
-    setItems(items.filter(...))
-  }
-
   return (
     <div className="App">
       <nav>
