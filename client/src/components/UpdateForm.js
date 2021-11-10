@@ -12,6 +12,8 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
+  console.log(useParams());
+  
   const id = 1;
 
   useEffect(()=> {
