@@ -54,7 +54,7 @@ const App = () => {
       {/* <Route path="/item-update/:id" component={UpdateForm} /> */ }
 
       <Route path="/item-update/:id">
-        <UodateForm setItems={setItems}/>
+        <UpdateForm setItems={setItems}/>
       </Route>
     </div>
   );
