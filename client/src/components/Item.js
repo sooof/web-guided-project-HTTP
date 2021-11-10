@@ -10,7 +10,7 @@ function Item(props) {
   const { id } = props.match.params;
 
   const { push } = useHistory();
-  
+
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
       .then(res=>{
@@ -25,7 +25,7 @@ function Item(props) {
   const handleEdit = ()=> {
     //1. Capture a click of the edit button.
     //2. Redirect the user to the edit form.
-    
+    push('/update-item');
     //3. Get the data for the item we are editing.
     //4. User changes the data.
     //5. Clicking the update button.
