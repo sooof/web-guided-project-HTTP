@@ -36,8 +36,8 @@ function Item(props) {
   const handleDelete = () => {
     axios.delete(`http://localhost:3333/items/${id}`)
       .then(resp=>{
-        props.setItems(resp.data);
         push('/item-list');
+        props.setItems(resp.data);
       })
       .catch(err => {
         console.log(err);
