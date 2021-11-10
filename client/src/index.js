@@ -45,15 +45,17 @@ const App = () => {
       />
       <Route
         path="/item-list/:id"
-        render={props => <Item {}...props} setItems={setItems} />}
+        render={props => <Item {...props} setItems={setItems} />}
       />
       <Route path="/item-form" component={ItemForm} />
-      <Route path="/item-update/:id" 
+      {/* <Route path="/item-update/:id" 
         render={ props=> <UpdateForm {...props} setItems={setItems}/> }
-      />
+      /> */}
       {/* <Route path="/item-update/:id" component={UpdateForm} /> */ }
 
-
+      <Route path="/item-update/:id">
+        <UodateForm setItems={setItems}/>
+      </Route>
     </div>
   );
 };
