@@ -12,10 +12,11 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
-  
+
   // const { id } = props.match.params;//useParams();
   const { id } = useParams();
 
+  //3. Get the data for the item we are editing.
   useEffect(()=> {
     axios.get(`http://localhost:3333/items/${id}`)
       .then(resp=> {
@@ -39,7 +40,7 @@ const UpdateForm = props => {
     });
   };
 
-    //3. Get the data for the item we are editing.
+  
     //4. User changes the data.
     //5. Clicking the update button.
     //6. Put request to update the data.
@@ -47,6 +48,7 @@ const UpdateForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log("updating!!!");
   };
 
   return (
