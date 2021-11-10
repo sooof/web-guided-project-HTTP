@@ -28,6 +28,13 @@ function Item(props) {
     push(`/item-update/${item.id}`);
   }
 
+  //To Delete:
+  //1. Capture a click.
+  //2. Send our axios call to delete current item (id)
+  //3. Redirect user to item list page.
+  //4. Update local state
+
+
   return (
     <div className="item-wrapper">
       <div className="item-header">
