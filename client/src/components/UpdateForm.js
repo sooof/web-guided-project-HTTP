@@ -13,6 +13,7 @@ const initialItem = {
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
 
+  console.log(props);
   // const { id } = props.match.params;//useParams();
   const { id } = useParams();
   const { push } = useHistory();
@@ -41,8 +42,6 @@ const UpdateForm = props => {
     });
   };
 
-  
-
   const handleSubmit = e => {
     //4. User changes the data.
     //5. Clicking the update button.
@@ -53,7 +52,7 @@ const UpdateForm = props => {
         //7. Redirect the user to the item page.
         //8. Update local storage with our new item list
         //setItems()
-        // console.log(resp);
+        console.log(resp);
         props.setItems(resp.data);
         push(`/item-list/${id}`);
 
