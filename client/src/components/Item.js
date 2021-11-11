@@ -21,7 +21,7 @@ function Item(props) {
     //1. Capture a click of the edit button.
     //2. Redirect the user to the edit form.
     // useHistory().push('/')
-    push('/item-update')
+    push(`/item-update/${id}`)
 
     // console.log("Item: editing")
   }
