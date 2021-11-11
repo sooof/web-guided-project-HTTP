@@ -12,11 +12,11 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
-  const {id} = useParams()
+  const id = 2;
 
   //3. Get the data for the item we are editing.
   useEffect(()=> {
-    axios.get(`http://localhost:3333/items/1`)
+    axios.get(`http://localhost:3333/items/${id}`)
       .then(resp=> {
         console.log("UpdateForm ", resp)
         setItem(resp.data);
