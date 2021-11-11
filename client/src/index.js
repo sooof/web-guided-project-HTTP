@@ -20,7 +20,7 @@ const App = () => {
       })
       .catch(error => console.log(error));
   }, []);
-  console.log("App.js props = ", items)
+  // console.log("App.js props = ", items)
   return (
     <div className="App">
       <nav>
@@ -47,6 +47,7 @@ const App = () => {
         render={props => <Item {...props} setItems={setItems} />}
       />
       <Route path="/item-form" component={ItemForm} />
+      <Route path="/item-update" component={UpdateForm} />
     </div>
   );
 };

@@ -21,14 +21,14 @@ function Item(props) {
     //1. Capture a click of the edit button.
     //2. Redirect the user to the edit form.
     // useHistory().push('/')
-    push('/')
+    push('/item-update')
+
+    // console.log("Item: editing")
+  }
     //3. Get the data for the item we are editing
     //4. User change the Data
     //5. Put request to update the date.
     //7. Redirect the user to the item page.
-    console.log("Item: editing")
-  }
-
   if (!item) {
     return <h2>Loading item data...</h2>;
   }
