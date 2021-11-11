@@ -12,7 +12,9 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
-  const id = 2;
+  console.log("UpdataFrom useParms = ", useParams())
+  // const id = 2;
+  const {id} = useParams();
 
   //3. Get the data for the item we are editing.
   useEffect(()=> {
