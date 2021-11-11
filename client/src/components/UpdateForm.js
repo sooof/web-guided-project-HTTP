@@ -16,8 +16,8 @@ const UpdateForm = props => {
   // console.log("UpdataFrom useParms = ", useParams())
   // console.log("UpdataFrom useParms = ", props.match.params)
   // const id = 2;
-  // const {id} = useParams();
-  const {id} = props.match.params;
+   const {id} = useParams();
+  // const {id} = props.match.params;
 
   //3. Get the data for the item we are editing.
   useEffect(()=> {
@@ -52,7 +52,10 @@ const UpdateForm = props => {
     axios.put(`http://localhost:3333/items/${id}`, item)
       .then(resp=>{
     //7. Redirect the user to the item page.
+    //8. Update local storage with our new item list
         console.log("UpdataFrom resp = ", resp)
+        console.log("UpdataFrom props = ", props)
+        props.setItems(resp.data);
         push(`/item-list/${id}`)
       })
       .catch(err=>{
