@@ -20,7 +20,7 @@ const App = () => {
       })
       .catch(error => console.log(error));
   }, []);
-
+  console.log("App.js props = ", items)
   return (
     <div className="App">
       <nav>
