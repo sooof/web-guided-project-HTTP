@@ -12,8 +12,9 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
+  const {push} = useHistory()
   // console.log("UpdataFrom useParms = ", useParams())
-  console.log("UpdataFrom useParms = ", props.match.params)
+  // console.log("UpdataFrom useParms = ", props.match.params)
   // const id = 2;
   // const {id} = useParams();
   const {id} = props.match.params;
@@ -22,7 +23,7 @@ const UpdateForm = props => {
   useEffect(()=> {
     axios.get(`http://localhost:3333/items/${id}`)
       .then(resp=> {
-        console.log("UpdateForm ", resp)
+        // console.log("UpdateForm ", resp)
         setItem(resp.data);
       })
       .catch(err=> {
@@ -44,7 +45,20 @@ const UpdateForm = props => {
   };
 
   const handleSubmit = e => {
+    //4. User change the Data
+    //5. Put request to update the date.
     e.preventDefault();
+    console.log("Updating !!!!")
+    axios.put(`http://localhost:3333/items/${id}`, item)
+      .then(resp=>{
+    //7. Redirect the user to the item page.
+        console.log("UpdataFrom resp = ", resp)
+        push(`/item-list/${id}`)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+
   };
 
   return (
