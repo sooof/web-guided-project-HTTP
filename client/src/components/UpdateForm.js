@@ -37,17 +37,22 @@ const UpdateForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("handleSubmit ")
+    // console.log("handleSubmit ")
     //4. Click the update button.
 
     //5. Put request to edit the data.
     axios.put(`http://localhost:3333/items/${id}`, item)
     .then(resp=> {
-      console.log("axios.put")
+      // console.log("axios.put")
+       //6. Set local state to our updated item list.
       props.setItems(resp.data);
       push(`/item-list/${id}`);
     })
+    .catch(err=>{
+      console.log(err);
+    })
   };
+
 
   //3. We get item and the user edits item information. 
   useEffect(() => {
