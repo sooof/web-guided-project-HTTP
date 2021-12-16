@@ -35,8 +35,10 @@ function Item(props) {
     axios.delete(`http://localhost:3333/items/${id}`)
     .then(res=>{
       console.log("axios.delete")
-      props.deleteItem(id)
-      props.setItems(res.data);
+     // props.deleteItem(id)//bug
+      props.setItems(res.data);//work
+      //setItem(res.data)// bug
+      // props.setItems(items.filter(item => item.id !== id))//no work
       push('/item-list')
     })
     .catch(err => {
