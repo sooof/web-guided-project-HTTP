@@ -16,6 +16,7 @@ const App = () => {
     axios
       .get("http://localhost:3333/items")
       .then(res => {
+        // console.log("App: ",res.data)
         setItems(res.data);
       })
       .catch(error => console.log(error));
@@ -47,6 +48,8 @@ const App = () => {
         render={props => <Item {...props} setItems={setItems} />}
       />
       <Route path="/item-form" component={ItemForm} />
+      <Route path="/item-update/:id" component={UpdateForm} />
+      {/* <Route path="/item-update/:id" render={()=><UpdateForm />} /> */}
     </div>
   );
 };

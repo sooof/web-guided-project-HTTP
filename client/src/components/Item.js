@@ -20,6 +20,15 @@ function Item(props) {
     return <h2>Loading item data...</h2>;
   }
 
+  const handleClickEdit = (e) => {
+    //1. Capture a click of the edit button.
+    //2. Redirect the user to the edit form.
+    // e.preventDefault();
+    console.log("handleClickEdit")
+    props.history.push(`/item-update/${item.id}`);
+     
+  }
+
   return (
     <div className="item-wrapper">
       <div className="item-header">
@@ -46,7 +55,7 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button onClick={handleClickEdit} className="md-button">
         Edit
       </button>
       <button className="md-button">
