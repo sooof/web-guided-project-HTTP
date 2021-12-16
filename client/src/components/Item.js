@@ -36,7 +36,7 @@ function Item(props) {
     .then(res=>{
       console.log("axios.delete")
       props.deleteItem(id)
-      // setItem(res.data);
+      props.setItems(res.data);
       push('/item-list')
     })
     .catch(err => {
