@@ -13,13 +13,14 @@ const initialItem = {
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
 
-  const { id } = props.match.params;
-  // const { id } = useParams();
+  // const { id } = props.match.params;
+  const { id } = useParams();
+  const { push } = useHistory();
   //  const params = useParams();
   // const id = 1
 
   // console.log("UpdateForm ", params)
-  console.log("UpdateForm ", id)
+  // console.log("UpdateForm ", id)
 
   const changeHandler = ev => {
     ev.persist();
@@ -36,8 +37,19 @@ const UpdateForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log("handleSubmit ")
+    //4. Click the update button.
+
+    //5. Put request to edit the data.
+    axios.put(`http://localhost:3333/items/${id}`, item)
+    .then(resp=> {
+      console.log("axios.put")
+      props.setItems(resp.data);
+      push(`/item-list/${id}`);
+    })
   };
- 
+
+  //3. We get item and the user edits item information. 
   useEffect(() => {
     axios
     .get(`http://localhost:3333/items/${id}`)
