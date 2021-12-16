@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from "react-router-dom";
 import { Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 
@@ -7,8 +8,9 @@ import ItemShipping from './ItemShipping';
 
 function Item(props) {
   const [item, setItem] = useState({});
+  const { push } = useHistory();
   const { id } = props.match.params;
-
+  console.log("Item props", props)
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
       .then(res=>{
@@ -24,9 +26,22 @@ function Item(props) {
     //1. Capture a click of the edit button.
     //2. Redirect the user to the edit form.
     // e.preventDefault();
-    console.log("handleClickEdit")
+    // console.log("handleClickEdit")
     props.history.push(`/item-update/${item.id}`);
      
+  }
+  const handleClickDelete = (e) =>{
+    console.log("handleClickDelete")
+    axios.delete(`http://localhost:3333/items/${id}`)
+    .then(res=>{
+      console.log("axios.delete")
+      props.deleteItem(id)
+      // setItem(res.data);
+      push('/item-list')
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   return (
@@ -58,7 +73,7 @@ function Item(props) {
       <button onClick={handleClickEdit} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick={handleClickDelete} className="md-button">
         Delete
       </button>
     </div>
