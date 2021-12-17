@@ -28,6 +28,21 @@ class PutMovieQuoteForm extends React.Component {
     // invoke this.props.putMessage here once it is written and passed in
     // then pass in the movie quote that is on state as an argument
     this.props.putMessage('72', this.state.movieQuote)
+    axios.put(`https://lambda-school-test-apis.herokuapp.com/quotes/${quote.id}`)
+    .then(resp=>{
+      console.log("putSuccessMessage resp=", resp)
+      this.setState({
+      
+        postSuccessMessage: resp.data.successMessage
+      })
+    })
+    .catch(err=>{ 
+      console.log(err)
+      this.setState({
+        deleteError: `${err.response.status} ${err.response.statusText}`,
+        deleteSuccessMessage: ''
+      })
+    })
   };
 
   render() {
